@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+/* Corrigido o seletor universal (-) para (*) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Define a largura mínima global para todo o documento */
+html, body {
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 :root {
@@ -20,8 +27,7 @@
   background-position: center;
   background-size: cover;
   min-height: 100vh;
-  min-width: 320px;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 header {
@@ -54,7 +60,6 @@ header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  /* Move o menu exatamente para o centro */
   display: flex;
 }
 
@@ -85,7 +90,7 @@ header {
   padding: 0;
   cursor: pointer;
   line-height: 0;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .ice_cream svg {
@@ -116,13 +121,14 @@ header {
 .menu_hero h2 {
   color: #F8F3E7;
   margin: 0;
-  font-size: clamp(54px, 6.5vw, 104px);
+  font-size: clamp(40px, 6.5vw, 104px);
   font-family: 'Bricolage Grotesque', sans-serif;
   font-stretch: condensed;
   font-weight: 600;
   line-height: .82;
   letter-spacing: -.065em;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .h2_span {
@@ -286,12 +292,14 @@ header {
 .register_section {
   padding: 60px 20px;
   background-color: var(--primary-color);
+  width: 100%;
 }
 
 .register_container {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 16px;
+  width: 100%;
 }
 
 .register_header {
@@ -327,13 +335,14 @@ header {
 .register_header h2 {
   color: #F8F3E7;
   margin: 4px 0 8px 0;
-  font-size: clamp(38px, 5vw, 64px);
+  font-size: clamp(28px, 5vw, 64px);
   font-family: 'Bricolage Grotesque', sans-serif;
   font-stretch: condensed;
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -.05em;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .register_header p {
@@ -342,7 +351,6 @@ header {
   font-size: 14px;
 }
 
-/* Form Card Galáctico com efeito Glassmorphism */
 .form_card {
   background: rgba(21, 16, 47, 0.7);
   backdrop-filter: blur(16px);
@@ -356,16 +364,7 @@ header {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
-}
-
-.form_card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+  width: 100%;
 }
 
 .form_row {
@@ -378,6 +377,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .form_group label {
@@ -387,6 +387,7 @@ header {
   font-weight: 500;
   letter-spacing: 0.3px;
 }
+
 .form_group input[type="text"],
 .form_group input[type="number"],
 .form_group select,
@@ -436,7 +437,6 @@ header {
   color: #fff;
 }
 
-/* Estilo nativo customizado para Input de Arquivo (sem JS) */
 .file_input {
   padding: 10px 12px;
 }
@@ -459,7 +459,6 @@ header {
   background-color: var(--secondary-color);
 }
 
-/* Botão Salvar Produto */
 .submit_btn {
   width: 100%;
   margin-top: 10px;
@@ -490,22 +489,6 @@ header {
   transform: translateY(0);
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-  .form_row {
-    grid-template-columns: 1fr;
-  }
-
-  .form_card {
-    padding: 24px 20px;
-  }
-
-  .cadastro_header {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
@@ -525,6 +508,19 @@ header {
 }
 
 @media (max-width: 600px) {
+  .form_row {
+    grid-template-columns: 1fr;
+  }
+
+  .form_card {
+    padding: 24px 20px;
+  }
+
+  .register_header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .cards {
     grid-template-columns: 1fr;
   }
